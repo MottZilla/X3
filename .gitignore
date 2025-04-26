@@ -1,3 +1,6 @@
 disk/*
 asm/*
-*.yaml
+*.d
+*.ld
+*_auto.ld
+x3_ps.exe.eu.yaml
