@@ -1,0 +1,64 @@
+name: X3_PS.EXE
+sha1: 2c2e1c2b1534fe57f976c11a67545e57a7df26cb
+options:
+  basename: x3_ps.exe
+  target_path: disk/eu/D0/X3_PS.EXE
+  elf_path: build/x3_ps.exe.elf
+  base_path: .
+  platform: psx
+  compiler: PSYQ
+
+  asm_path: asm/eu
+  src_path: src
+  build_path: build/eu
+  # create_asm_dependencies: True
+
+  ld_script_path: linker_scripts/eu/x3_ps.exe.ld
+  ld_dependencies: True
+
+  find_file_boundaries: True
+  gp_value: 0x800C9544
+
+  o_as_suffix: True
+  use_legacy_include_asm: False
+
+  asm_function_macro: glabel
+  asm_jtbl_label_macro: jlabel
+  asm_data_macro: dlabel
+
+  section_order: [".rodata", ".text", ".data", ".bss"]
+  # auto_link_sections: [".data", ".rodata", ".bss"]
+
+  symbol_addrs_path:
+    - linker_scripts/eu/symbol_addrs.txt
+  reloc_addrs_path:
+    - linker_scripts/eu/reloc_addrs.txt
+
+  undefined_funcs_auto_path: linker_scripts/eu/auto/undefined_funcs_auto.ld
+  undefined_syms_auto_path: linker_scripts/eu/auto/undefined_syms_auto.ld
+
+  extensions_path: tools/splat_ext
+
+  subalign: 2
+
+  string_encoding: ASCII
+  data_string_encoding: ASCII
+  rodata_string_guesser_level: 2
+  data_string_guesser_level: 2
+segments:
+  - name: header
+    type: header
+    start: 0x0
+
+  - name: main
+    type: code
+    start: 0x800
+    vram: 0x80010000
+    # bss_size: Please fill out this value when you figure out the bss size
+    subsegments:
+      - [0x800, rodata, 800]
+      - [0x1F58, asm, 1F58]
+      - [0x92210, hasm]
+      - [0x92270, data]
+      - [0xB40E0, data, zero_fill]
+  - [0x12E800]
