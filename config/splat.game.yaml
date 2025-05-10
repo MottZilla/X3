@@ -4,22 +4,22 @@ options:
   basename: x3_ps.exe
   target_path: disk/eu/D0/X3_PS.EXE
   elf_path: build/x3_ps.exe.elf
-  base_path: .
+  base_path: ..
   platform: psx
-  compiler: PSYQ
+  compiler: GCC
 
-  asm_path: asm/eu
-  src_path: src
-  build_path: build/eu
+  asm_path: asm/game
+  src_path: src/game
+
+  build_path: build/
   # create_asm_dependencies: True
 
-  ld_script_path: linker_scripts/eu/x3_ps.exe.ld
+  ld_script_path: config/ld/game.ld
   ld_dependencies: True
 
   find_file_boundaries: True
   gp_value: 0x800C9544
 
-  o_as_suffix: True
   use_legacy_include_asm: False
 
   asm_function_macro: glabel
@@ -29,13 +29,9 @@ options:
   section_order: [".rodata", ".text", ".data", ".bss"]
   # auto_link_sections: [".data", ".rodata", ".bss"]
 
-  symbol_addrs_path:
-    - linker_scripts/eu/symbol_addrs.txt
-  reloc_addrs_path:
-    - linker_scripts/eu/reloc_addrs.txt
-
-  undefined_funcs_auto_path: linker_scripts/eu/auto/undefined_funcs_auto.ld
-  undefined_syms_auto_path: linker_scripts/eu/auto/undefined_syms_auto.ld
+  symbol_addrs_path: config/symbols.game.txt
+  undefined_funcs_auto_path: config/undefined_funcs_auto.game.txt
+  undefined_syms_auto_path: config/undefined_syms_auto.game.txt
 
   extensions_path: tools/splat_ext
 
@@ -67,12 +63,12 @@ segments:
       - [0x1C6C, rodata]
       - [0x1C80, rodata]
       - [0x1F58, asm, 1F58]
-      - [0x92210, hasm]
-      - [0x92220, hasm]
-      - [0x92230, hasm]
-      - [0x92240, hasm]
-      - [0x92250, hasm]
-      - [0x92260, hasm]
+      - [0x92210, asm]
+      - [0x92220, asm]
+      - [0x92230, asm]
+      - [0x92240, asm]
+      - [0x92250, asm]
+      - [0x92260, asm]
       - [0x92270, data]
       - [0xB40E0, data, zero_fill]
   - [0x12E800]

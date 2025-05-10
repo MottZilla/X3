@@ -4,3 +4,6 @@ asm/*
 *.ld
 *_auto.ld
 x3_ps.exe.eu.yaml
+generated.symbols*
+*auto.*.txt
+build
