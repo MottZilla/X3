@@ -62,7 +62,7 @@ segments:
       - [0x1888, rodata]
       - [0x1C6C, rodata]
       - [0x1C80, rodata]
-      - [0x1F58, asm, 1F58]
+      - [0x1F60, asm]
       - [0x92210, asm]
       - [0x92220, asm]
       - [0x92230, asm]
