@@ -1,0 +1,2 @@
+entrypoint = 0x8001A9AC; //size:0xAC
+func_8001AA68 = 0x8001AA68; //size:0x10

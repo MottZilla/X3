@@ -84,7 +84,6 @@ define link
 		-Map $(BUILD_DIR)/$(1).map \
 		-T $(CONFIG_DIR)/ld/$(1).ld \
 		-T $(CONFIG_DIR)/symbols.txt \
-		-T $(CONFIG_DIR)/symbols.game.txt \
 		-T $(CONFIG_DIR)/undefined_syms.txt \
 		-T $(CONFIG_DIR)/undefined_syms_auto.$(1).txt \
 		-T $(CONFIG_DIR)/undefined_funcs_auto.$(1).txt
@@ -164,7 +163,7 @@ extract_boot:
 
 ## Game
 extract_game:
-	cat $(CONFIG_DIR)/symbols.txt $(CONFIG_DIR)/symbols.game.txt > $(CONFIG_DIR)/generated.symbols.game.txt
+#	cat $(CONFIG_DIR)/symbols.txt $(CONFIG_DIR)/symbols.game.txt > $(CONFIG_DIR)/generated.symbols.game.txt
 	$(SPLAT) $(CONFIG_DIR)/splat.game.yaml
 
 ## Overlays
